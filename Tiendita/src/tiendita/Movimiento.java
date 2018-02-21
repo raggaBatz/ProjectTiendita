@@ -1,23 +1,28 @@
 
 package tiendita;
 
-import java.util.Date;
 
 public class Movimiento {
     int id;
-    Date fecha;
-    Double monto;
+    String fecha;
+    Double montoOperacion;
+    Double montoRecibido;
+    Double vueltoOperacion;
+    String descripcion;
     String tipo;
     int nit;
 
     public Movimiento(){
     
     }
-     
-    public Movimiento(int id, Date fecha, Double monto, String tipo, int nit) {
+
+    public Movimiento(int id, String fecha, Double montoOperacion, Double montoRecibido, Double vueltoOperacion, String descripcion, String tipo, int nit) {
         this.id = id;
         this.fecha = fecha;
-        this.monto = monto;
+        this.montoOperacion = montoOperacion;
+        this.montoRecibido = montoRecibido;
+        this.vueltoOperacion = vueltoOperacion;
+        this.descripcion = descripcion;
         this.tipo = tipo;
         this.nit = nit;
     }
@@ -30,20 +35,44 @@ public class Movimiento {
         this.id = id;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public Double getMonto() {
-        return monto;
+    public Double getMontoOperacion() {
+        return montoOperacion;
     }
 
-    public void setMonto(Double monto) {
-        this.monto = monto;
+    public void setMontoOperacion(Double montoOperacion) {
+        this.montoOperacion = montoOperacion;
+    }
+
+    public Double getMontoRecibido() {
+        return montoRecibido;
+    }
+
+    public void setMontoRecibido(Double montoRecibido) {
+        this.montoRecibido = montoRecibido;
+    }
+
+    public Double getVueltoOperacion() {
+        return vueltoOperacion;
+    }
+
+    public void setVueltoOperacion(Double vueltoOperacion) {
+        this.vueltoOperacion = vueltoOperacion;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getTipo() {
@@ -60,5 +89,6 @@ public class Movimiento {
 
     public void setNit(int nit) {
         this.nit = nit;
-    }    
+    }
 }
+    
