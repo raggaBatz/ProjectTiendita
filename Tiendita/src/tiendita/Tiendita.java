@@ -151,7 +151,9 @@ public class Tiendita {
             System.out.println("***************************");
             System.out.println("------Monto--operacion-----");
             monto = op.nextDouble();
-            System.out.println("--1)Efectivo-o-2)credito---");
+            System.out.println("--1)Efectivo---------------");
+            System.out.println("--2)Credito----------------");
+            System.out.println("--3)Cheque-----------------");
             tipo = op.nextInt();
             if(tipo==1){
                 System.out.println("------Monto-recibido-------");
@@ -170,8 +172,17 @@ public class Tiendita {
                     mensaje = "Cliente para venta a credito no existe";
                     throw new Exception();
                 }else{
-                    mensaje = "Venta al credito";
+                    if(validarLimiteCliente(nit, monto)){
+                        mensaje = "Venta al credito";
+                    }else{
+                        mensaje = "Venta supera limite credito";
+                        throw new Exception();
+                    }
                 }
+            }else if(tipo==3){
+                System.out.println("-----Banco-del-cheque------");
+                mensaje = op.nextLine();
+                mensaje = "Pago en cheque de " + mensaje;
             }else{
                 mensaje = "Seleccione una operacion valida";
                 throw new Exception();
@@ -199,6 +210,29 @@ public class Tiendita {
                 int nitLista = listaClientes.get(i).getNit();
                 if(nit == nitLista){
                     return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    private static Boolean validarLimiteCliente(int nit, Double monto){
+        Double utilizado = 0.0, disponible = 0.0,limite = 0.0;
+        
+        for (int i = 0; i < listaClientes.size(); i++) {
+            Cliente cl= listaClientes.get(i);
+            if(nit == cl.getNit()){
+                limite = cl.getLimite();
+                for(int m = 0; m < listaMovimientos.size();m++){
+                    Movimiento mov = listaMovimientos.get(m);
+                    if(cl.getNit() == mov.getNit()){
+                        utilizado = utilizado + mov.getMontoOperacion(); 
+                    }
+                }
+                if(limite>=(utilizado+monto)){
+                    return true;
+                }else{
+                    return false;
                 }
             }
         }

@@ -1,0 +1,2 @@
+     ID|               FECHA|     MONTO|  RECIBIDO|    VUELTO|                        DESCRIPCION|           TIPO|       NIT
+  20001| 2018-02-20 23:19:18|      75.0|       0.0|       0.0|                   APERTURA DE CAJA|              E|  83560572
